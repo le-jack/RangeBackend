@@ -1,0 +1,16 @@
+You should read this before running the setup.sh script.
+
+This is a fairly simple script. Before you run it, ensure that:
+
+* The DNS server can connect to the internet
+
+* You have run the following:
+sudo apt install bind9
+sudo apt install dnsutils
+
+Or that the previous packages are already installed on the server.
+
+If anything breaks without an error message then I would recommend starting over and
+following this website, "https://ubuntu.com/server/docs/service-domain-name-service-dns".
+This script will create .backup files for any file it modifies.
+
