@@ -1,0 +1,6 @@
+/etc/bind/named.conf.local
+mkdir /etc/bind/zones
+/etc/bind/zones/db.10.14
+/etc/bind/zones/db.auror.mil
+
+sudo systemctl bind9.service
