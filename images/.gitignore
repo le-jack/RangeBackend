@@ -1,5 +1,6 @@
-# exclude everything (uploads)
-images/*
+# exclude everything
+*
 
 # except for the readme
-!images/README
+!README
+!.gitignore
