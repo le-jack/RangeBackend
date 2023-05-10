@@ -1,0 +1,69 @@
+# An ansible inventory file for a range that is attempting to represent an airgapped
+# network.
+
+all:
+  children:
+    # Yarr here be different "classes" of workstations that need to be configured in 
+    # alike ways
+    windows:
+      children:
+        workstations:
+          hosts:
+            ws1:
+              ansible_host: 10.0.1.2
+            ws2:
+              ansible_host: 10.0.1.3
+            ws3:
+              ansible_host: 10.0.1.4
+            ws4:
+              ansible_host: 10.0.1.5
+
+        domain_controller:
+          hosts:
+            dc:
+              ansible_host: 10.0.2.2
+
+    linux:
+      hosts:
+        adm-ws:
+          ansible_host: 10.0.1.6
+
+        syslog-srv:
+          ansible_host: 10.0.2.3
+
+        sql-srv:
+          ansible_host: 10.0.2.4
+
+
+
+      # The box we will use as a "serial input" machine (nonfunctional (for now), but think like radar dish)
+        radar-ingest:
+          ansible_host: 10.0.3.2
+
+    networking:
+      hosts:
+        core_router:
+          pfsense-core: 10.0.0.1
+
+        rogue_access_point:
+          pfsense-rougewap: 10.0.0.2
+
+    security_onion:
+      hosts:
+
+        so-mgr:
+          ansible_host: 10.0.2.5
+
+      # Change these to change the SO sensor placement. @TODO Allow teams to choose sensor/WAP placement
+        so-srs-1:
+          ansible_host: 10.0.2.6
+        so-srs-2:
+          ansible_host: 10.0.2.7
+
+  vars:
+  # These accounts will have to be created by terraform.
+    ansible_ssh_user: test #username
+
+    ansible_ssh_private_key: /path/to/test #filepath
+
+

@@ -1,0 +1,5 @@
+# exclude everything (uploads)
+./*
+
+# except for the readme
+!./README
