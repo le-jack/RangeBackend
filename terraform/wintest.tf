@@ -7,11 +7,11 @@ terraform {
     }
 }
 
-variable "pm_user" {
+variable "PM_USER" {
     default = "admin"
 }
 
-variable "pm_password" {
+variable "PM_PASSWORD" {
     default = "admin"
 }
 
@@ -23,28 +23,23 @@ resource "proxmox_vm_qemu" "win10_vm" {
     count = 4
 
     name = "wintest${count.index + 1}"
-    description = "Windows 10 test VM ${count.index + 1}"
     target_node = "r730"
+    iso = "win10-desktop"
     os_type = "win10"
-    sockets = 1
-    core = 4
+    sockets = 2
+    cores = 4
     memory = "4096"
     scsihw = "virtio-scsi-pci"
-    storage = "local"
-    template_name = ""
-    scsi_controller {
-        model = "virtio-scsi-pci"
-    }
 
     disk {
         size = "50G"
         type = "virtio"
+        storage = "local"
     }
 
-    network_interface {
+    network {
         model = "virtio"
         bridge = "vmbr0"
-        ip = "192.168.1.${count.index + 2}"
     }
     bootdisk = "scsi0"
 
