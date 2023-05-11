@@ -28,7 +28,7 @@ resource "proxmox_vm_qemu" "win10_vm" {
 
     name = "wintest${count.index + 1}"
     target_node = "r730"
-    iso = "/var/lib/vz/template/iso/win10-desktop"
+    iso = "win10-desktop"
     os_type = "win10"
     sockets = 2
     cores = 4
