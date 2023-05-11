@@ -37,7 +37,7 @@ resource "proxmox_vm_qemu" "win10_vm" {
 
     disk {
         size = "50G"
-        type = "virtio"
+        type = "scsi0"
         storage = "local-lvm"
     }
 
