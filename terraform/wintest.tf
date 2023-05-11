@@ -8,11 +8,11 @@ terraform {
 }
 
 variable "PM_USER" {
-    default = "admin"
+    type = string
 }
 
 variable "PM_PASSWORD" {
-    default = "admin"
+    type = string
 }
 
 provider "proxmox" {
