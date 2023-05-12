@@ -25,7 +25,7 @@ provider "proxmox" {
 
 resource "proxmox_vm_qemu" "win10_blank" {
 
-    name = "win10_blank"
+    name = "win10-blank"
     target_node = "r730"
     iso = "local:iso/win10raw.iso"
     os_type = "win10"
@@ -50,7 +50,7 @@ resource "proxmox_vm_qemu" "win10_blank" {
 
 resource "proxmox_vm_qemu" "kali_blank" {
     
-    name = "kali_blank"
+    name = "kali-blank"
     target_node = "r730"
     iso = "local:iso/kaliraw.iso"
     os_type = "linux"
