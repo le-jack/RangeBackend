@@ -23,12 +23,11 @@ provider "proxmox" {
 
 }
 
-resource "proxmox_vm_qemu" "win10_template_vm" {
-    count = 4
+resource "proxmox_vm_qemu" "win10_blank" {
 
-    name = "wintest${count.index + 1}"
+    name = "win10_blank"
     target_node = "r730"
-    iso = "local:iso/windo10raw.iso"
+    iso = "local:iso/win10raw.iso"
     os_type = "win10"
     sockets = 2
     cores = 4
@@ -47,9 +46,30 @@ resource "proxmox_vm_qemu" "win10_template_vm" {
     }
     bootdisk = "scsi0"
 
-    provisioner "remote-exec" {
-        inline = [
-            "echo 'Hello!' > C:\\hello.txt"
-        ]
+}
+
+resource "proxmox_vm_qemu" "kali_blank" {
+    
+    name = "kali_blank"
+    target_node = "r730"
+    iso = "local:iso/kaliraw.iso"
+    os_type = "linux"
+    sockets = 2
+    cores = 4
+    memory = "4096"
+    scsihw = "virtio-scsi-pci"
+
+    disk {
+        size = "50G"
+        type = "scsi"
+        storage = "local-lvm"
     }
+
+    network {
+        model = "virtio"
+        bridge = "vmbr2"
+    }
+    bootdisk = "scsi0"
+    
+
 }
