@@ -1,1 +1,9 @@
-Terraform files go here (More to come)
+The directory for terraform files.
+
+If you already have terraform configured on the box you are working on, you do *not* have to run terraformsetup.sh every time, and should only focus on the terraform_deploy.sh scripts.
+
+If this is a new box or a newly wiped box, you will have to create more golden images using the deploy_blank_images script. From here, you need to go through and install the operating system on all of them, and save them as a template. Then run the create_templates script to ensure that they are visible.
+
+@TODO Add in the rest of the stuff here
+
+

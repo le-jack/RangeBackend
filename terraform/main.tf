@@ -23,12 +23,12 @@ provider "proxmox" {
 
 }
 
-resource "proxmox_vm_qemu" "win10_vm" {
+resource "proxmox_vm_qemu" "win10_template_vm" {
     count = 4
 
     name = "wintest${count.index + 1}"
     target_node = "r730"
-    iso = "local:iso/win10-desktop.iso"
+    iso = "local:iso/windo10raw.iso"
     os_type = "win10"
     sockets = 2
     cores = 4
@@ -43,7 +43,7 @@ resource "proxmox_vm_qemu" "win10_vm" {
 
     network {
         model = "virtio"
-        bridge = "vmbr0"
+        bridge = "vmbr2"
     }
     bootdisk = "scsi0"
 
